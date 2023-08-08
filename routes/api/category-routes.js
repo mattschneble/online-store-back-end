@@ -10,12 +10,12 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Products
   try {
     // get the data from the Category table
-    const categoryData = await Category.findAll({
+    const allCategoryData = await Category.findAll({
       // include the Product table
       include: [{ model: Product }],
     });
     // if data is found, return the data
-    res.status(200).json(categoryData);
+    res.status(200).json(allCategoryData);
   } catch (err) {
     // if no data is found, return an error
     res.status(500).json(err);
@@ -28,75 +28,80 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Products
   try {
     // get the data from the Category table
-    const categoryData = await Category.findByPk(req.params.id, {
+    const getCategoryData = await Category.findByPk(req.params.id, {
       // include the Product table
       include: [{ model: Product }],
     });
     // if no data is found, return an error
-    if (!categoryData) {
+    if (!getCategoryData) {
       res.status(404).json({ message: 'No category was found with that id!' });
       return;
     }
     // if data is found, return the data
-    res.status(200).json(categoryData);
+    res.status(200).json(getCategoryData);
   } catch (err) {
     // if no data is found, return an error
     res.status(500).json(err);
   }
 });
 
+// Create a an asynchronous POST request to the /api/categories endpoint
 router.post('/', async (req, res) => {
   // create a new category
   try {
-    const categoryData = await Category.create(req.body);
+    // get the data from the Category table
+    const postCategoryData = await Category.create(req.body);
     // if data is found, return the data
-    res.status(200).json(categoryData);
+    res.status(200).json(postCategoryData);
   } catch (err) {
     // if no data is found, return an error
     res.status(400).json(err);
   }
 });
 
+// Create a an asynchronous PUT request to the /api/categories/:id endpoint
 router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   try {
     // get the data from the Category table
-    const categoryData = await Category.update(req.body, {
+    const putCategoryData = await Category.update(req.body, {
       // define the id parameter in the where clause
       where: {
         id: req.params.id,
       },
     });
     // if no data is found, return an error
-    if (!categoryData[0]) {
+    if (!putCategoryData[0]) {
       res.status(404).json({ message: 'No category was found with that id!' });
       return;
     }
     // if data is found, return the data
-    res.status(200).json(categoryData);
+    res.status(200).json(putCategoryData);
   } catch (err) {
     // if no data is found, return an error
     res.status(500).json(err);
   }
 });
 
+
+// Create a an asynchronous DELETE request to the /api/categories/:id endpoint
 router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try {
     // get the data from the Category table
-    const categoryData = await Category.destroy({
+    const deleteCategoryData = await Category.destroy({
       // define the id parameter in the where clause
       where: {
         id: req.params.id,
       },
     });
     // if no data is found, return an error
-    if (!categoryData) {
+    if (!deleteCategoryData) {
       res.status(404).json({ message: 'No category was found with that id!' });
       return;
     }
     // if data is found, return the data
-    res.status(200).json(categoryData);
+    res.status(200).json(deleteCategoryData);
   } catch (err) {
     // if no data is found, return an error
     res.status(500).json(err);
