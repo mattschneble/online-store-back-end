@@ -4,7 +4,7 @@ const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
 
-// Create a an asynchronous GET request to the /api/tags endpoint
+// Create an asynchronous GET request to the /api/tags endpoint
 router.get('/', async (req, res) => {
   // find all tags
   // be sure to include its associated Product data
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Create a an asynchronous GET request to the /api/tags/:id endpoint
+// Create an asynchronous GET request to the /api/tags/:id endpoint
 router.get('/:id', async (req, res) => {
   // find a single tag by its `id`
   // be sure to include its associated Product data
@@ -45,7 +45,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// Create a an asynchronous POST request to the /api/tags endpoint
+// Create an asynchronous POST request to the /api/tags endpoint
 router.post('/', async (req, res) => {
   // create a new tag
   try {
@@ -59,7 +59,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Create a an asynchronous PUT request to the /api/tags/:id endpoint
+// Create an asynchronous PUT request to the /api/tags/:id endpoint
 router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
   try {
@@ -84,7 +84,7 @@ router.put('/:id', async (req, res) => {
 });
 
 
-// Create a an asynchronous DELETE request to the /api/tags/:id endpoint
+// Create an asynchronous DELETE request to the /api/tags/:id endpoint
 router.delete('/:id', async (req, res) => {
   // delete on tag by its `id` value
   try {
