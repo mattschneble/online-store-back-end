@@ -1,13 +1,17 @@
 // Importing the Model and DataTypes objects from Sequelize
 const { Model, DataTypes } = require('sequelize');
+
 // Importing the connection to the database from the config file
 const sequelize = require('../config/connection');
+
 // Importing the Product and Tag models to use as foreign keys
 const Product = require('./Product');
 const Tag = require('./Tag');
 
+// Creating a new Sequelize model for the ProductTag table
 class ProductTag extends Model {}
 
+// Initializing the ProductTag model by extending off Sequelize's Model class
 ProductTag.init(
   {
     // define columns
