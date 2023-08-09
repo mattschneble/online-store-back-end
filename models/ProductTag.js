@@ -2,7 +2,7 @@
 const { Model, DataTypes } = require('sequelize');
 
 // Importing the connection to the database from the config file
-const sequelize = require('../config/connection');
+const sequelize = require('../config/connection.js');
 
 // Importing the Product and Tag models to use as foreign keys
 const Product = require('./Product');

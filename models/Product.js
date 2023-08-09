@@ -2,7 +2,7 @@
 const { Model, DataTypes } = require('sequelize');
 
 // Import our database connection from config.js
-const sequelize = require('../config/connection');
+const sequelize = require('../config/connection.js');
 
 // Import Category model (table) to use as foreign key
 const Category = require('./Category');
